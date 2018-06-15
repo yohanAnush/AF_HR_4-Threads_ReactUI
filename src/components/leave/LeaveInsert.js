@@ -43,14 +43,18 @@ export default class LeaveInsert extends Component {
     checkEligibility() {
         axios.get('http://localhost:8080/leave/emp/' + this.state.value + '/issue?start=' + this.state.start + '&end=' + this.state.end)
             .then(response => {
-                console.log(response);
-            });
+                if (response.data.data) { alert('Leave issued successfully.'); }
+                else { alert('Employee is not eligible for a leave at the moment.'); }
+            })
+            .catch(reject => {
+                alert('Ops! Something went wrong:- ' + reject);
+            })
     }
 
     render() {
         return(
             <form className={"form-inline"}>
-                <div className={"form-group row"}>
+                <div className={"form-group"}>
                     <label htmlFor={"eidForLeave"}>Employee Id(eid)</label>
                     <input value={this.state.value} type={"text"} className={"form-control"} id={"eidTxt"} placeholder={"Enter EID"} onChange={this.onTextChange}/>
                     <DatePicker name={this.state.start} color={"btn-success"} onDateChange={this.onStartDateChange}/>
