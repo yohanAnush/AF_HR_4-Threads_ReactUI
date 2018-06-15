@@ -73,12 +73,13 @@ export default class ShiftInsertView extends Component {
         return(
             <div>
                 <Breadcrumb href={"/"} home={"HR"} current={"Leave"}/>
-                <div className  ={"row"}>
-                    <div className={"col-md-6"}>
-                        <ShiftInsert value={this.state.keyword} onTextChange={this.onTextChange}/>
-                    </div>
-                    <div className={"col-md-6"}>
+
+                <div className="card">
+                    <div className="card-body">
+
                         <ResultView results={this.state.results} select={this.onResultSelection}/>
+                        <ShiftInsert value={this.state.keyword} onTextChange={this.onTextChange}/>
+
                     </div>
                 </div>
             </div>

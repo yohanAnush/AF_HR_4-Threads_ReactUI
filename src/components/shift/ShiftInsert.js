@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+    import React, { Component } from 'react';
 import dateformat from 'dateformat';
 import axios from 'axios';
 
@@ -109,27 +109,58 @@ export default class ShiftInsert extends Component {
     render() {
         return(
             <div>
-                <form className={"form-inline"}>
-                    <div className={"form-group"}>
-                        <label htmlFor={"eidForLeave"}>Employee Id(eid)</label>
-                        <input value={this.props.value} type={"text"} className={"form-control"} id={"eidTxt"} placeholder={"Enter EID"} onChange={this.onTextChange}/>
-                    </div>
-                </form>
-
-                <form className={"form"}>
-                    <div className={"form-group"}>
-                        {
-                            this.state.days.map(day =>
-                                <div id={day} className={"row"}>
-                                    <label htmlFor={"eidForLeave"}>{day}</label>
-                                    <input id={day + ":time_start"} type={"text"} onChange={this.onTimeChange}/>
-                                    <input id={day + ":time_end"} type={"text"} onChange={this.onTimeChange}/>
+                <form>
+                            <form className={"form-inline"}>
+                                <div className={"form-group"}>
+                                    <div className="col-md-6">
+                                    <label htmlFor={"eidForLeave"}>Employee Id(eid)</label>
+                                    </div>
+                                    <div className="col-md-4">
+                                    <input value={this.props.value} type={"text"} className={"form-control"} id={"eidTxt"} placeholder={"Enter EID"} onChange={this.onTextChange}/>
+                                    </div>
                                 </div>
-                            )
-                        }
-                    </div>
-                </form>
-                <button className={"btn btn-md btn-primary"} onClick={this.submit}>Assign</button>
+                            </form>
+                    <br/>
+                            <form className={"form"}>
+
+                                    <div className="form-group">
+                                        { this.state.days.map(day =>
+                                        <div className="form-row">
+                                            <div className="col-md-4">
+                                                <div className="form-group">
+                                                    <label htmlFor={"eidForLeave"}>{day}</label>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <div className="form-group">
+                                                    <input id={day + ":time_start"} type={"text"} onChange={this.onTimeChange}/>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <div className="form-group">
+                                                    <input id={day + ":time_end"} type={"text"} onChange={this.onTimeChange}/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        )}
+                                    </div>
+
+
+                                {/*<div className={"form-group"}>*/}
+                                    {/*{*/}
+                                        {/*this.state.days.map(day =>*/}
+                                            {/*<div id={day} className={"row"}>*/}
+                                                {/*<label htmlFor={"eidForLeave"}>{day}</label>*/}
+                                                {/*<input id={day + ":time_start"} type={"text"} onChange={this.onTimeChange}/>*/}
+                                                {/*<input id={day + ":time_end"} type={"text"} onChange={this.onTimeChange}/>*/}
+                                            {/*</div>*/}
+                                        {/*)*/}
+                                    {/*}*/}
+                                {/*</div>*/}
+                            </form>
+                            <button className={"btn btn-md btn-primary"} onClick={this.submit}>Assign</button>
+                        </form>
+
             </div>
         );
     }
