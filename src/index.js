@@ -15,8 +15,9 @@ import UpdateEmployee from './components/employee/UpdateEmployee';
 import AddEmployee from './components/employee/AddEmployee';
 
 import AddDepartmnet from './components/department/AddDepartment';
-import EditDepartment from './components/department/EditDepartment';
 import DepartmentList from './components/department/DepartmentList';
+import EditDepartment from './components/department/EditDepartment';
+import GeneralList from './components/general_Information/GeneralList';
 
 
 
@@ -35,6 +36,7 @@ ReactDOM.render(
             <Route path='/departments' component={DepartmentList}/>
             <Route path='/add-department' component={AddDepartmnet}/>
             <Route path='/edit-department/:did' component={EditDepartment}/>
+            <Route path='/general' component={GeneralList}/>
         </div>
     </BrowserRouter>
     , document.getElementById('root'));

@@ -39,9 +39,12 @@ export default class DepartmentListItem extends Component {
                         <i className="fas fa-trash-alt"></i>
                     </button>
                 </td>
-                <td><button type="button" id={department.did} className="btn btn-success">
-                        <Link style={{color: '#FFF'}} to={'edit-department/' + department.did}>Update</Link>
-                    </button>
+                <td>
+                    <Link style={{color: '#FFF'}} to={'edit-department/' + department.did}>
+                        <button type="button" id={department.did} className="btn btn-success">
+                            <i className="fa fa-edit"></i>
+                        </button>
+                    </Link>
                 </td>
             </tr>
         );
