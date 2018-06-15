@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import Breadcrumb from '../commons/Breadcrumb';
 import ResultView from '../commons/ResultView';
+import CommonDetails from "../../Statics.Common";
 
 export default class BookHandler extends  Component{
     constructor(props) {
@@ -23,7 +24,7 @@ export default class BookHandler extends  Component{
     }
 
     getEmployeesByName(keyword){
-        axios.get('http://localhost:3001/employee/name/'+keyword).then(res =>{
+        axios.get(CommonDetails.NODE_API+'/employee/name/'+keyword).then(res =>{
             console.log(res.data.data);
             this.setState({
                 employees: res.data.data || res.data
@@ -36,7 +37,7 @@ export default class BookHandler extends  Component{
     }
 
     getAllDepartments(){
-        axios.get('http://localhost:3001/department/').then((res) =>{
+        axios.get(CommonDetails.NODE_API+'/department/').then((res) =>{
             console.log(res.data.data);
             this.setState({
                 departments : res.data.data
@@ -65,7 +66,7 @@ export default class BookHandler extends  Component{
     }
 
     assignEmployee(){
-        axios.put('http://localhost:3001/employee/assign',{
+        axios.put(CommonDetails.NODE_API+'/employee/assign',{
             eid:this.state.eid,
             department:this.state.department
         }).then((result) =>{

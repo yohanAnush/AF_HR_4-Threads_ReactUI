@@ -3,6 +3,7 @@ import Employees from './EmployeeList';
 import EmployeeSearch from './EmployeeSearch';
 import axios from 'axios';
 import Breadcrumb from '../commons/Breadcrumb';
+import CommonDetails from "../../Statics.Common";
 
 export default class BookHandler extends  Component{
     constructor(props) {
@@ -16,7 +17,7 @@ export default class BookHandler extends  Component{
     }
 
     getAllEmployees(){
-        axios.get('http://localhost:3001/employee').then(res =>{
+        axios.get(CommonDetails.NODE_API+'/employee').then(res =>{
             console.log(res.data.data);
             this.setState({
                 employees: res.data.data || res.data
@@ -25,7 +26,7 @@ export default class BookHandler extends  Component{
     }
 
     getEmployeeByName(keyword){
-        axios.get('http://localhost:3001/employee/name/'+keyword).then(res =>{
+        axios.get(CommonDetails.NODE_API+'/employee/name/'+keyword).then(res =>{
             console.log(res.data.data);
             this.setState({
                 employees: res.data.data || res.data

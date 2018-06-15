@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
+import CommonDetails from "../../Statics.Common";
 
 export default class Employee extends Component{
 
@@ -22,7 +23,7 @@ export default class Employee extends Component{
     delete(id) {
         var retVal = window.confirm("Are you sure you wish to delete this item?");
         if( retVal === true ){
-            axios.delete('http://localhost:3001/employee/remove/' + id).then(results => {
+            axios.delete(CommonDetails.NODE_API+'/employee/remove/' + id).then(results => {
                 if(results.status === 200) {
                     this.getAllEmployees();
                 }
