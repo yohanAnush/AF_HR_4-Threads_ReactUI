@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Breadcrumb from '../commons/Breadcrumb';
 
@@ -12,6 +13,8 @@ export default class GeneralList extends Component {
             doe: '',
             services: []
         }
+
+        this.deleteService = this.deleteService.bind(this);
     }
 
     componentDidMount() {
@@ -25,6 +28,28 @@ export default class GeneralList extends Component {
                     });
                 }
             })
+    }
+
+    deleteService(service){
+        let confirmation = window.confirm("Are you sure you want to delete this service?");
+        if(confirmation == true){
+            axios.delete('http://localhost:3001/general/remove/' + service).then(res =>{
+                if(res.data.success) {
+                    axios.get('http://localhost:3001/general')
+                        .then(response => {
+                            if (response.data.success) {
+                                this.setState({
+                                    services: response.data.data[0].services,
+                                    name: response.data.data[0].hospital_name,
+                                    doe: response.data.data[0].date_established
+                                });
+                            }
+                        })
+                }
+            })
+            return true;
+        }
+        return false;
     }
 
     render() {
@@ -50,11 +75,19 @@ export default class GeneralList extends Component {
                             <thead>
                             <tr>
                                 <th scope="col">Our health services .... </th>
+                                <th scope="col">Delete/ Update </th>
                             </tr>
                             </thead>
                             <tbody>
                             {
-                                this.state.services.map(service => <tr><td>{service}</td></tr>)
+                                this.state.services.map(service =>
+                                    <tr>
+                                        <td key={service}>{service.service} <br/> <small>{service.description}</small></td>
+                                        <td><button type="button" id={service} className="btn btn-danger" onClick={(e) => this.deleteService(service)}>
+                                            <i className="fas fa-trash-alt"></i>
+                                        </button>
+                                        </td>
+                                    </tr>)
 
                             }
                             </tbody>
