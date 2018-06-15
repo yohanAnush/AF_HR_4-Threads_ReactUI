@@ -35,6 +35,8 @@ export default class DepartmentList extends Component {
                         <tr>
                             <th scope="col">Department Id</th>
                             <th scope="col">Department Name</th>
+                            <th scope="col">Department Description</th>
+                            <th scope="col">Department Manager</th>
                             <th scope="col">Date Established</th>
                         </tr>
                         </thead>

@@ -12,16 +12,20 @@ export default class AddDepartment extends Component {
         this.state = {
             did: '',
             name: '',
+            description: '',
+            manager: '',
             date_established:''
         };
 
         this.onDateChange = this.onDateChange.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
+        this.onDescriptionChange = this.onDescriptionChange.bind(this);
+        this.onManagerNameChange = this.onManagerNameChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     onDateChange(date) {
-        this.setState({ date_established: date.toLocaleString() });
+        this.setState({ date_established: date.toISOString() });
     }
 
     onNameChange(e) {
@@ -29,8 +33,30 @@ export default class AddDepartment extends Component {
         this.setState({ name: name });
     }
 
+    onDescriptionChange(e) {
+        let description = e.target.value;
+        this.setState({ description: description });
+    }
+
+    onManagerNameChange(e) {
+        let manager = e.target.value;
+        this.setState({ manager: manager });
+    }
+
     onSubmit() {
-        console.log(this.state.date_established + ' ' + this.state.name);
+        axios.post('http://localhost:3001/department/add', {
+            '﻿did' : this.state.did,
+            'name' : this.state.name ,
+            'description' : this.state.description ,
+            'department_manager' : this.state.manager ,
+            'date_established' : this.state.date_established
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render(){
@@ -46,6 +72,14 @@ export default class AddDepartment extends Component {
                         <div className="form-group">
                             <label htmlFor="deptName">Department Name</label>
                             <input onChange={this.onNameChange} type="text" className="form-control" id="deptName" placeholder="Enter department name"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="deptDescription">Department Description</label>
+                            <input onChange={this.onDescriptionChange} type="text" className="form-control" id="deptDescription" placeholder="Enter department description"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="deptManager">Department Manager</label>
+                            <input onChange={this.onManagerNameChange} type="text" className="form-control" id="deptManager" placeholder="Enter department manager's name"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="dateEstablished">Date Established</label>
