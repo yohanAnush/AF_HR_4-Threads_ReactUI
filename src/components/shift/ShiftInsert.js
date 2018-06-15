@@ -21,7 +21,7 @@ export default class ShiftInsert extends Component {
             friday: {day: 'friday', time_start: '', time_end: ''},
             saturday: {day: 'saturday', time_start: '', time_end: ''},
             sunday: {day: 'sunday', time_start: '', time_end: ''},
-            days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+            days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
 
             value: this.props.value
         };
@@ -125,23 +125,23 @@ export default class ShiftInsert extends Component {
 
                                     <div className="form-group">
                                         { this.state.days.map(day =>
-                                        <div className="form-row">
-                                            <div className="col-md-4">
-                                                <div className="form-group">
-                                                    <label htmlFor={"eidForLeave"}>{day}</label>
+                                            <div className="form-row">
+                                                <div className="col-md-2">
+                                                    <div className="form-group" style={{float: "right"}}>
+                                                        <label htmlFor={"eidForLeave"}>{day}</label>
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-2">
+                                                    <div className="form-group">
+                                                        <input placeholder={"Start time"} id={day + ":time_start"} type={"text"} className={"form-control"} onChange={this.onTimeChange}/>
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-2">
+                                                    <div className="form-group">
+                                                        <input placeholder={"End time"} id={day + ":time_end"} type={"text"} className={"form-control"} onChange={this.onTimeChange}/>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className="col-md-4">
-                                                <div className="form-group">
-                                                    <input id={day + ":time_start"} type={"text"} onChange={this.onTimeChange}/>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <div className="form-group">
-                                                    <input id={day + ":time_end"} type={"text"} onChange={this.onTimeChange}/>
-                                                </div>
-                                            </div>
-                                        </div>
                                         )}
                                     </div>
 
@@ -158,7 +158,7 @@ export default class ShiftInsert extends Component {
                                     {/*}*/}
                                 {/*</div>*/}
                             </form>
-                            <button className={"btn btn-md btn-primary"} onClick={this.submit}>Assign</button>
+                            <button className={"btn btn-md btn-primary col-md-3"} style={{float: "left", left: "200px"}} onClick={this.submit}>Assign</button>
                         </form>
 
             </div>
