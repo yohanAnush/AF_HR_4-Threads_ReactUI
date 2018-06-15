@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import Breadcrumb from '../commons/Breadcrumb';
 
 export default class addEmployee extends  Component{
     constructor(props){
@@ -98,15 +99,7 @@ export default class addEmployee extends  Component{
     render(){
         return(
             <div>
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                        <a href="/dashboard">Dashboard</a>
-                    </li>
-                    <li className="breadcrumb-item">
-                        <a href="/employee">Employee</a>
-                    </li>
-                    <li className="breadcrumb-item active">Add Employee</li>
-                </ol>
+                <Breadcrumb home={"Employee"} href={'/employee'} current={"Add Employee"}/>
 
                 <div className="card card-register mx-auto mt-5">
                     <div className="card-header">
@@ -118,23 +111,16 @@ export default class addEmployee extends  Component{
                                 <div className="form-row">
                                     <div className="col-md-6">
                                         <label>First name</label>
-                                        <input type="text" className={"form-control "+this.state.formErrors.errNameClass } placeholder="Enter first name" name={'name'} onChange={this.setChanges} />
-                                        <div className="invalid-feedback">Invalid first name</div>
+                                        <input type="text" className={"form-control "+this.state.formErrors.errNameClass } placeholder="Enter Name" name={'name'} onChange={this.setChanges} />
+                                        <div className="invalid-feedback">Invalid name</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <label>Last name</label>
-                                        <input className="form-control" type="text" placeholder="Enter last name" />
-                                        <div className="invalid-feedback">Invalid last name</div>
+                                        <label>Email:</label>
+                                        <input type="email" className={"form-control "+this.state.formErrors.errEmailClass } placeholder="Email Address" name={'email'} onChange={this.setChanges} />
+                                        <div className="invalid-feedback">Invalid email address</div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="form-group">
-                                <label>Email:</label>
-                                <input type="email" className={"form-control "+this.state.formErrors.errEmailClass } placeholder="Email Address" name={'email'} onChange={this.setChanges} />
-                                <div className="invalid-feedback">Invalid email address</div>
-                            </div>
-
 
                             <div className="form-group">
                                 <label>Position:</label>

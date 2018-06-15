@@ -38,7 +38,7 @@ ReactDOM.render(
 
             <Route path='/departments' component={DepartmentList}/>
             <Route path='/add-department' component={AddDepartmnet}/>
-            <Route path='/edit-department' component={EditDepartment}/>
+            <Route path='/edit-department/:did' component={EditDepartment}/>
         </div>
     </BrowserRouter>
     , document.getElementById('root'));
