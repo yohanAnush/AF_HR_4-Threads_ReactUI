@@ -65,7 +65,7 @@ export default class LeaveView extends Component {
     render() {
         return(
             <div>
-                <Breadcrumb home={"HR"} current={"Leave"}/>
+                <Breadcrumb href={"/"} home={"HR"} current={"Leave"}/>
                 <div className={"card"}>
                     <LeaveInsert value={this.state.keyword} onTextChange={this.onTextChange}/>
                     <ResultView results={this.state.results} select={this.onResultSelection}/>
