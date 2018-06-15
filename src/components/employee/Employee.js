@@ -32,6 +32,10 @@ export default class Employee extends Component{
        return false;
     }
 
+    update(id){
+
+    }
+
     render() {
         return <tr>
             <td>{this.employee.eid}</td>
@@ -48,7 +52,7 @@ export default class Employee extends Component{
             </td>
             <td>
                 <button className={"btn btn-md btn-success"}>
-                    <Link to={'update-employee/'+this.employee.eid}>Update</Link>
+                    <Link style={{color:"#FFF"}}  to={'update-employee/'+this.employee.eid}><i className="fa fa-edit"></i></Link>
                 </button>
             </td>
         </tr>

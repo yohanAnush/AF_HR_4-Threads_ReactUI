@@ -21,6 +21,10 @@ export default class BookHandler extends  Component{
         })
     }
 
+    getEmployeeByName(){
+
+    }
+
     render() {
         return <div>
             <ol className="breadcrumb">
@@ -29,6 +33,23 @@ export default class BookHandler extends  Component{
                 </li>
                 <li className="breadcrumb-item active">Employee</li>
             </ol>
+
+
+            <div className="col-md-8 col-md-offset-2">
+                <div className="row">
+                    <h2>Search Employee</h2>
+                    <div id="custom-search-input">
+                        <div className="input-group col-md-12">
+                            <input type="text" className="search-query form-control" placeholder="Search"  id="keyword"/>
+                            <span className="input-group-btn">
+							<button id="search-food" class="btn btn-success" type="button">
+								<span className="fa fa-search"></span>
+							</button>
+						</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
                     <div className="card">
                         <div className="card-header">Employee Details</div>

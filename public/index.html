@@ -1,164 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="theme-color" content="#000000">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
 
-        <!--
-            manifest.json provides metadata used when your web app is added to the
-            homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-        -->
+    <!--
+        manifest.json provides metadata used when your web app is added to the
+        homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
 
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-        <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 
-        <!-- bootstrap v4.1.1 -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- bootstrap v4.1.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-        <!-- font awesome(for icons) -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- font awesome(for icons) -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
-        <!-- lato font(from google fonts) -->
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <!-- lato font(from google fonts) -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="%PUBLIC_URL%/css/hr.css" rel="stylesheet">
 
-        <style type="text/css">
-            html, body {
-                height: 100%;
-                min-height: 100%;
-                background: #DCDCDC;
-            }
+    <!--
+        Notice the use of %PUBLIC_URL% in the tags above.
+        It will be replaced with the URL of the `public` folder during the build.
+        Only files inside the `public` folder can be referenced from the HTML.
 
-            i {
-                padding-right: 10px;
-            }
+        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+        work correctly both with client-side routing and a non-root public URL.
+        Learn how to configure a non-root public URL by running `npm run build`.
+    -->
 
-            .card {
-                background: white;
-                border-radius: 5px;
-                border: 0px;
-                padding: 20px;
-            }
-            #sidebar {
-                height: 100%;
-                min-height: 100%;
-                background: #0B0B17/*#F8F9FA*/;
-            }
-
-            .sidebar-heading {
-                padding-right: 10px;
-                color: white/*#646464*/;
-            }
-
-            .btn-empty {
-                background: rgba(0,0,0,0);
-                border: rgba(0,0,0,0);
-                color: white/*#646464*/;
-            }
-
-            .nav-item {
-                padding-top: 10px;
-            }
-
-        </style>
-
-        <!--
-            Notice the use of %PUBLIC_URL% in the tags above.
-            It will be replaced with the URL of the `public` folder during the build.
-            Only files inside the `public` folder can be referenced from the HTML.
-
-            Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-            work correctly both with client-side routing and a non-root public URL.
-            Learn how to configure a non-root public URL by running `npm run build`.
-        -->
-
-        <title>React App</title>
-    </head>
-    <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
-
-        <!-- side navbar -->
-        <div class="w-100" style="background: white; height: 0px;">
-            <!-- horizontal navbar
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">
-                    <b>HR 4-Threads</b>
+    <title>HR 4-Threads</title>
+</head>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">HR 4-Threads</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="/dashboard">
+                    <i class="fa fa-fw fa-tachometer-alt"></i>
+                    <span class="nav-link-text">Dashboard</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            </li>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <!--<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-        <!--                </li>
-                    </ul>
-                </div>
-            </nav>
-        -->
-        </div>
-        <div class="row h-100">
-            <div id="sidebar" class="col-md-3">
-                <br /><br />
-                <small class="sidebar-heading"><b>Menu</b></small>
-                <ul  class="list-group list-group-flush">
-                    <nav class="nav flex-column">
-
-                        <!-- General information dropdown -->
-                        <li class="nav-item dropdown">
-                            <button class="nav-link dropdown-toggle btn-empty" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-info-circle"></i>General
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                        </li>
-                        <!-- / -->
-
-                        <!-- Attendance dropdown -->
-                        <li class="nav-item dropdown">
-                            <button class="nav-link dropdown-toggle btn-empty" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-address-book"></i>Attendance
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/attendance">Today's attendance</a>
-                                <a class="dropdown-item" href="/leave">Issue leave</a>
-                        </li>
-                        <!-- / -->
-
-                        <!-- Employee dropdown -->
-                        <li class="nav-item dropdown">
-                            <button class="nav-link dropdown-toggle btn-empty" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user-tie"></i>Employee
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/employee">View Employees</a>
-                                <a class="dropdown-item" href="/add-employee">Add Employee</a>
-                                <a class="dropdown-item" href="/assign-employee">Assign Employee</a>
-                        </li>
-                        <!-- / -->
-
-                        <!-- Department dropdown -->
-                        <li class="nav-item dropdown">
-                            <button class="nav-link dropdown-toggle btn-empty" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-hospital-alt"></i>Departments
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/departments">View all departments</a>
-                                <a class="dropdown-item" href="/add-department">Add department</a>
-                        </li>
-                    </nav>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="General">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseGeneral" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-info-circle"></i>
+                    <span class="nav-link-text">General</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseGeneral">
+                    <li>
+                        <a href="/general">Action</a>
+                    </li>
                 </ul>
-            </div>
+            </li>
 
-            <!-- everything we make goes inside this div -->
-            <div class="col-md-9" style="padding: 20px;">
-                <div id="root"></div>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Attendance">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAttendance" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-address-book"></i>
+                    <span class="nav-link-text">Attendance</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseAttendance">
+                    <li>
+                        <a href="/attendance">Today's attendance</a>
+                    </li>
+                    <li>
+                        <a href="/leave">Issue leave</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employee">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseEmployee" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="nav-link-text">Employee</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseEmployee">
+                    <li>
+                        <a href="/employee">View Employees</a>
+                    </li>
+                    <li>
+                        <a href="/add-employee">Add Employee</a>
+                    </li>
+                    <li>
+                        <a href="/assign-employee">Assign Employee</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employee">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseDepartments" data-parent="#exampleAccordion">
+                    <i class="fas fa-hospital-alt"></i>
+                    <span class="nav-link-text">Departments</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseDepartments">
+                    <li>
+                        <a href="/departments">View all departments</a>
+                    </li>
+                    <li>
+                        <a href="/add-department">Add department</a>
+                    </li>
+                    <li>
+                        <a href="/edit-department">Edit departments</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fab fa-fw fa-accusoft"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out-alt"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- everything we make goes inside this div -->
+        <div id="root"></div>
+
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © HR 4-Threads 2018</small>
             </div>
         </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    </body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+</body>
 </html>
