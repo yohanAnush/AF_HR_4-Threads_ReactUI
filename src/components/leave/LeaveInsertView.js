@@ -69,9 +69,15 @@ export default class LeaveInsertView extends Component {
         return(
             <div>
                 <Breadcrumb href={"/"} home={"HR"} current={"Shift"}/>
-                <div className={"card"}>
-                    <LeaveInsert value={this.state.keyword} onTextChange={this.onTextChange}/>
-                    <ResultView results={this.state.results} select={this.onResultSelection}/>
+
+                <div className="card card-register mx-auto mt-5">
+                    <div className="card-header">
+                        Register New Employee
+                    </div>
+                    <div className="card-body">
+                        <LeaveInsert value={this.state.keyword} onTextChange={this.onTextChange}/>
+                        <ResultView results={this.state.results} select={this.onResultSelection}/>
+                    </div>
                 </div>
             </div>
         );

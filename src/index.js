@@ -8,7 +8,7 @@ import App from './App';
 
 import AttendanceView from './components/attendance/AttendanceView';
 import LeaveInsertView from './components/leave/LeaveInsertView';
-import ShiftInsertView from './components/shift/ShiftInsertView';
+import LeaveList from './components/leave/LeaveList';
 
 import EmployeeHandler from './components/employee/EmployeeHandler';
 import AssignEmployee from './components/employee/AssignEmployee';
@@ -28,7 +28,7 @@ ReactDOM.render(
             <Route path='/' component={App}/>
             <Route path='/attendance' component={AttendanceView}/>
             <Route path='/leave/insert' component={LeaveInsertView}/>
-            <Route path='/shift/insert' component={ShiftInsertView}/>
+            <Route path='/leaves' component={LeaveList}/>
 
             <Route path='/employee' component={EmployeeHandler}/>
             <Route path='/add-employee' component={AddEmployee}/>
