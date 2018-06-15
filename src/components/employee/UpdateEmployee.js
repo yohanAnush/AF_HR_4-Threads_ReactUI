@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import dateFormat from 'dateformat';
 import Breadcrumb from '../commons/Breadcrumb';
+import CommonDetails from "../../Statics.Common";
 
 export default class UpdateEmployee extends  Component{
     constructor(props){
@@ -34,7 +35,7 @@ export default class UpdateEmployee extends  Component{
     }
 
     updateEmployee(){
-        axios.put('http://localhost:3001/employee/update/'+ this.props.match.params.eid,{
+        axios.put(CommonDetails.NODE_API+'/employee/update/'+ this.props.match.params.eid,{
             name:this.state.name,
             email:this.state.email,
             gender:this.state.gender,

@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import Breadcrumb from '../commons/Breadcrumb';
 import { Redirect } from 'react-router-dom';
+import CommonDetails from '../../Statics.Common'
 
 export default class addEmployee extends  Component{
     constructor(props){
@@ -69,7 +70,8 @@ export default class addEmployee extends  Component{
     }
 
     addEmployee(){
-        axios.post('http://localhost:3001/employee/add',{
+
+        axios.post(CommonDetails.NODE_API+'/employee/add',{
             name:this.state.name,
             email:this.state.email,
             gender:this.state.gender,
@@ -92,7 +94,7 @@ export default class addEmployee extends  Component{
     }
 
     getAllDepartments(){
-        axios.get('http://localhost:3001/department/').then((res) =>{
+        axios.get(CommonDetails.NODE_API+'/department/').then((res) =>{
             console.log(res.data.data);
             this.setState({
                 departments : res.data.data
