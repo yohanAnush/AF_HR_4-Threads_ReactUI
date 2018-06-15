@@ -12,9 +12,16 @@ export default class DepartmentList extends Component {
         this.state = {
             departments: []
         };
+
+        this.getAllDepartments = this.getAllDepartments.bind(this);
     }
 
+    // Fetching data when component is rendered and is a get request.
     componentDidMount() {
+        this.getAllDepartments();
+    }
+
+    getAllDepartments() {
         axios.get('http://localhost:3001/department/')
             .then(response => {
                 if (response.data.success) { this.setState({ departments: response.data.data }); }
@@ -38,10 +45,13 @@ export default class DepartmentList extends Component {
                             <th scope="col">Department Description</th>
                             <th scope="col">Department Manager</th>
                             <th scope="col">Date Established</th>
+                            <th scope="col">Delete</th>
+                            <th scope="col">Update</th>
                         </tr>
                         </thead>
                         <tbody>
-                        { this.state.departments.map((department, i) => <DepartmentListItem department={department} key={i}/>) }
+                        { this.state.departments.map((department, i) =>
+                            <DepartmentListItem getAllDepartments={() => this.getAllDepartments()} department={department} key={department.did}/>) }
                         </tbody>
                     </table>
                 </div>

@@ -14,7 +14,7 @@ export default class AddDepartment extends Component {
             name: '',
             description: '',
             manager: '',
-            date_established:''
+            date_established:'Date established'
         };
 
         this.onDateChange = this.onDateChange.bind(this);
@@ -24,8 +24,10 @@ export default class AddDepartment extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onDateChange(date) {
-        this.setState({ date_established: date.toISOString() });
+    onDateChange(e) {
+        let date_established = e.target.value;
+        //this.setState({ date_established: date.toISOString() });
+        this.setState({ date_established: date_established });
     }
 
     onNameChange(e) {
@@ -81,9 +83,10 @@ export default class AddDepartment extends Component {
                             <label htmlFor="deptManager">Department Manager</label>
                             <input onChange={this.onManagerNameChange} type="text" className="form-control" id="deptManager" placeholder="Enter department manager's name"/>
                         </div>
+
                         <div className="form-group">
                             <label htmlFor="dateEstablished">Date Established</label>
-                            <DatePicker onDateChange={this.onDateChange}/>
+                            <input type="date" className="form-control" name={'dateEstablished'} onChange={this.onDateChange} />
                             <small>{this.state.date}</small>
                         </div>
 
