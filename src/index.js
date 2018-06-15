@@ -7,7 +7,9 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './App';
 
 import AttendanceView from './components/attendance/AttendanceView';
-import LeaveView from './components/leave/LeaveView';
+import LeaveInsertView from './components/leave/LeaveInsertView';
+import ShiftInsertView from './components/shift/ShiftInsertView';
+import ShiftListView from './components/shift/ShiftListView';
 
 import EmployeeHandler from './components/employee/EmployeeHandler';
 import AssignEmployee from './components/employee/AssignEmployee';
@@ -25,7 +27,9 @@ ReactDOM.render(
         <div>
             <Route path='/' component={App}/>
             <Route path='/attendance' component={AttendanceView}/>
-            <Route path='/Leave' component={LeaveView}/>
+            <Route path='/leave/insert' component={LeaveInsertView}/>
+            <Route path='/shift/insert' component={ShiftInsertView}/>
+            <Route path='/shifts/' component={ShiftListView}/>
 
             <Route path='/employee' component={EmployeeHandler}/>
             <Route path='/add-employee' component={AddEmployee}/>

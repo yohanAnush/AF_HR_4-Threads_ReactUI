@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
-import LeaveInsert from './LeaveInsert';
+import ShiftInsert from './ShiftInsert';
 import Breadcrumb from '../commons/Breadcrumb';
 import ResultView from '../commons/ResultView';
+import axios from "axios/index";
 
-export default class LeaveView extends Component {
+export default class ShiftInsertView extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            keyword: '',
+            eid: '',
+            shifts: [],
             results: [],
-            id: ''
-
+            keyword: ''
         };
 
+        this.onResultSelection = this.onResultSelection.bind(this);
         this.onTextChange = this.onTextChange.bind(this);
         this.getEmployeeWithEid = this.getEmployeeWithEid.bind(this);
-        this.onResultSelection = this.onResultSelection.bind(this);
+    }
+
+    onResultSelection(e) {
+        this.setState({ eid: e });
     }
 
     onTextChange(e) {
@@ -69,12 +73,15 @@ export default class LeaveView extends Component {
         return(
             <div>
                 <Breadcrumb href={"/"} home={"HR"} current={"Leave"}/>
-                <div className={"card"}>
-                    <LeaveInsert value={this.state.keyword} onTextChange={this.onTextChange}/>
-                    <ResultView results={this.state.results} select={this.onResultSelection}/>
+                <div className  ={"row"}>
+                    <div className={"col-md-6"}>
+                        <ShiftInsert value={this.state.keyword} onTextChange={this.onTextChange}/>
+                    </div>
+                    <div className={"col-md-6"}>
+                        <ResultView results={this.state.results} select={this.onResultSelection}/>
+                    </div>
                 </div>
             </div>
         );
     }
-
 }
