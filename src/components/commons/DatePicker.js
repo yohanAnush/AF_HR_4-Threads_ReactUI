@@ -15,6 +15,7 @@ export default class DatePicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: this.props.name,
             date: '',
             today: '',
             btnClasses: 'btn dropdown-toggle',
@@ -31,12 +32,16 @@ export default class DatePicker extends Component {
         if (this.props.color != undefined && this.props.color !== '') { this.setState({ btnColorClass: this.props.color }); }
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({ name: nextProps.name });
+    }
+
     render() {
         return(
             <div className="dropdown show">
                 <a className={this.state.btnClasses + ' ' + this.state.btnColorClass} href="#" role="button" id="dropdownMenuLink"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Select Date
+                    { this.state.name }
                 </a>
 
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
