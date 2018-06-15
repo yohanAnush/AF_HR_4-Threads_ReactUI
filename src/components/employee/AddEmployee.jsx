@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import Breadcrumb from '../commons/Breadcrumb';
+import { Redirect } from 'react-router-dom';
 
 export default class addEmployee extends  Component{
     constructor(props){
@@ -18,7 +19,8 @@ export default class addEmployee extends  Component{
                 errNameClass:'',
                 errEmailClass:'',
                 errPositionClass:'',
-            }
+            },
+            isInserted:false
         }
 
         console.log(this.state.formErrors);
@@ -80,6 +82,8 @@ export default class addEmployee extends  Component{
             }
             if(res.data.success === true){
                 alert("Success..!\n"+res.data.data);
+                this.setState({isInserted:true});
+                this.render();
             }
         }).catch((err)=>{
             console.log(err);
@@ -97,6 +101,10 @@ export default class addEmployee extends  Component{
     }
 
     render(){
+        if(this.state.isInserted === true){
+            <Redirect to={'/employee'}/>
+        }
+
         return(
             <div>
                 <Breadcrumb home={"Employee"} href={'/employee'} current={"Add Employee"}/>
