@@ -28,7 +28,7 @@ export default class ShiftInsert extends Component {
 
         this.onTimeChange = this.onTimeChange.bind(this);
         this.submit = this.submit.bind(this);
-        this.onTextChange = this.props.onTextChange.bind(this);
+        this.onTextChange = this.props.onTex tChange.bind(this);
     }
 
     componentDidMount() {
