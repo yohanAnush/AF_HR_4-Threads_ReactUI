@@ -493,3 +493,10 @@ footer.sticky-footer {
     width: calc(100% - 55px);
   }
 }
+
+.invisible {
+  opacity: 0;
+  background: rgba(0,0,0,0);
+  color: rgba(0,0,0,0);
+  border: rgba(0,0,0,0);
+}

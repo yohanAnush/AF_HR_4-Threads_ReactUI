@@ -50,6 +50,15 @@ export default class LeaveInsert extends Component {
     render() {
         return(
             <form className={"form-inline"}>
+<<<<<<< HEAD
+                <div className={"form-group row"}>
+                    <label htmlFor={"eidForLeave"}>Employee Id(eid)</label>
+                    <input value={this.state.value} type={"text"} className={"form-control"} id={"eidTxt"} placeholder={"Enter EID"} onChange={this.onTextChange}/>
+                    <DatePicker name={this.state.start} color={"btn-success"} onDateChange={this.onStartDateChange}/>
+                    <DatePicker name={this.state.end} color={"btn-danger"} onDateChange={this.onEndDateChange}/>
+                    <button className={"invisible"}>-</button>
+                    <button type={"button"} className={"btn btn-md btn-primary"} onClick={this.checkEligibility}>Check</button>
+=======
                 <div className={"form-group"}>
 
                     <div className={"col-md-3"}>
@@ -68,8 +77,8 @@ export default class LeaveInsert extends Component {
                         <button type={"button"} className={"btn btn-md btn-primary "} onClick={this.checkEligibility}>Check</button>
                     </div>
 
+>>>>>>> b91486f7da72623cfdbea1d106bee3bef47755ee
                 </div>
-
             </form>
         );
     }
