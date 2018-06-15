@@ -12,9 +12,8 @@ export default class addEmployee extends  Component{
             email : '',
             gender : 'Male',
             position : '',
-            department : '',
+            did : '',
             date_joined : '',
-            departments:[],
             hasErrors: true,
             formErrors : {
                 errNameClass:'',
@@ -24,10 +23,9 @@ export default class addEmployee extends  Component{
             isInserted:false
         }
 
-        console.log(this.state.formErrors);
         this.setChanges = this.setChanges.bind(this);
         this.addEmployee = this.addEmployee.bind(this);
-        this.getAllDepartments();
+        this.addEmployee = this.addEmployee.bind(this);
     }
 
     setChanges(e){
@@ -35,6 +33,7 @@ export default class addEmployee extends  Component{
 
         this.checkValidations(e);
     }
+
 
     checkValidations(e){
         var formErrors = this.state.formErrors;
@@ -70,13 +69,11 @@ export default class addEmployee extends  Component{
     }
 
     addEmployee(){
-
         axios.post(CommonDetails.NODE_API+'/employee/add',{
             name:this.state.name,
             email:this.state.email,
             gender:this.state.gender,
             position:this.state.position,
-            department:this.state.department,
             date_joined:this.state.date_joined
         }).then((res) =>{
             if(res.data.success === false){
@@ -98,14 +95,14 @@ export default class addEmployee extends  Component{
         });
     }
 
-    getAllDepartments(){
-        axios.get(CommonDetails.NODE_API+'/department/').then((res) =>{
-            console.log(res.data.data);
-            this.setState({
-                departments : res.data.data
-            })
-        });
-    }
+    // getAllDepartments(){
+    //     axios.get(CommonDetails.NODE_API+'/department/').then((res) =>{
+    //         console.log(res.data.data);
+    //         this.setState({
+    //             departments : res.data.data
+    //         })
+    //     });
+    // }
 
     render(){
         if(this.state.isInserted === true){
@@ -156,22 +153,19 @@ export default class addEmployee extends  Component{
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-group">
-                                            <label>Department:</label>
-                                            <select className={'form-control'} name={'department'} onChange={this.setChanges} >
-                                                {
-                                                    this.state.departments.map((item, i) =>{
-                                                        return <option key={i} value={item.name}>{item.name}</option>
-                                                    })
-                                                }
-                                            </select>
+                                            <label>Joined Date:</label>
+                                            <input type="date" className="form-control" name={'date_joined'} onChange={this.setChanges} />
+                                            {/*<label>Department:</label>*/}
+                                            {/*<select className={'form-control'} name={'department_name'} onChange={this.setDepartmentChange} >*/}
+                                                {/*{*/}
+                                                    {/*this.state.departments.map((item, i) =>{*/}
+                                                        {/*return <option key={i} value={item.name}>{item.name}</option>*/}
+                                                    {/*})*/}
+                                                {/*}*/}
+                                            {/*</select>*/}
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className="form-group">
-                                <label>Joined Date:</label>
-                                <input type="date" className="form-control" name={'date_joined'} onChange={this.setChanges} />
                             </div>
 
                             <button type={'button'} className="btn btn-success btn-block" onClick={this.addEmployee}>Register Employee</button>

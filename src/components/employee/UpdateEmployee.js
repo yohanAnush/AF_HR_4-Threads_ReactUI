@@ -12,25 +12,55 @@ export default class UpdateEmployee extends  Component{
             email : '',
             gender : 'Male',
             position : '',
-            department : 'OPD',
             date_joined : '',
-            formErrors: {email: '', password: ''},
-            errname:'',
-            departments:[]
+            formErrors : {
+                errNameClass:'',
+                errEmailClass:'',
+                errPositionClass:'',
+            }
         }
 
         this.setChanges = this.setChanges.bind(this);
         this.updateEmployee = this.updateEmployee.bind(this);
-        this.getAllDepartments();
-        this.getEmployeeDetails();
+        this.getEmployeeDetailsById();
     }
 
     setChanges(e){
         this.setState({[e.target.name]:e.target.value});
-        if(this.state.name.length < 5){
-            this.setState({errname:"hfghgh"});
-        }else{
-            this.setState({errname:""});
+
+        this.checkValidations(e);
+    }
+
+    checkValidations(e){
+        var formErrors = this.state.formErrors;
+        if(e.target.name === 'name'){
+            if (/^[a-zA-Z\s]+$/.test(e.target.value)) {
+                formErrors.errNameClass = 'is-valid';
+                this.setState({formErrors: formErrors});
+            }else{
+                formErrors.errNameClass = 'is-invalid';
+                this.setState({formErrors: formErrors});
+            }
+        }
+
+        if(e.target.name === 'email'){
+            if (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(e.target.value)) {
+                formErrors.errEmailClass = 'is-valid';
+                this.setState({formErrors: formErrors});
+            }else{
+                formErrors.errEmailClass = 'is-invalid';
+                this.setState({formErrors: formErrors});
+            }
+        }
+
+        if(e.target.name === 'position'){
+            if (/^[a-zA-Z\s]+$/.test(e.target.value)) {
+                formErrors.errPositionClass = 'is-valid';
+                this.setState({formErrors: formErrors});
+            }else{
+                formErrors.errPositionClass = 'is-invalid';
+                this.setState({formErrors: formErrors});
+            }
         }
     }
 
@@ -40,7 +70,6 @@ export default class UpdateEmployee extends  Component{
             email:this.state.email,
             gender:this.state.gender,
             position:this.state.position,
-            department:this.state.department,
             date_joined: this.state.date_joined
         }).then((res) =>{
             if(res.data.success === false){
@@ -55,7 +84,7 @@ export default class UpdateEmployee extends  Component{
         });
     }
 
-    getEmployeeDetails(){
+    getEmployeeDetailsById(){
         axios.get('http://localhost:3001/employee/id/'+this.props.match.params.eid).then((res) =>{
             console.log(res.data.data);
             this.setState({
@@ -63,20 +92,11 @@ export default class UpdateEmployee extends  Component{
                 email : res.data.data[0].email,
                 gender : res.data.data[0].gender,
                 position : res.data.data[0].position,
-                department : res.data.data[0].department,
                 date_joined : res.data.data[0].date_joined,
             })
         });
     }
 
-    getAllDepartments(){
-        axios.get('http://localhost:3001/department/').then((res) =>{
-            console.log(res.data.data);
-            this.setState({
-                departments : res.data.data
-            })
-        });
-    }
 
     render(){
         return(<div>
@@ -93,18 +113,21 @@ export default class UpdateEmployee extends  Component{
                                 <div className="form-row">
                                     <div className="col-md-6">
                                         <label>First name</label>
-                                        <input type="text" className="form-control" placeholder="Enter Name"  value={this.state.name} name={'name'} onChange={this.setChanges} />
+                                        <input type="text" className={"form-control "+this.state.formErrors.errNameClass } placeholder="Enter Name"  value={this.state.name} name={'name'} onChange={this.setChanges} />
+                                        <div className="invalid-feedback">Invalid name</div>
                                     </div>
                                     <div className="col-md-6">
                                         <label>Email:</label>
-                                        <input type="email" className="form-control" placeholder="Email Address"  value={this.state.email} name={'email'} onChange={this.setChanges} />
+                                        <input type="email" className={"form-control "+this.state.formErrors.errEmailClass } placeholder="Email Address"  value={this.state.email} name={'email'} onChange={this.setChanges} />
+                                        <div className="invalid-feedback">Invalid email address</div>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="form-group">
                                 <label>Position:</label>
-                                <input type="text" className="form-control" placeholder="Position" value={this.state.position} name={'position'} onChange={this.setChanges} />
+                                <input type="text" className={"form-control "+this.state.formErrors.errPositionClass } placeholder="Position" value={this.state.position} name={'position'} onChange={this.setChanges} />
+                                <div className="invalid-feedback">Invalid position name</div>
                             </div>
 
                             <div className="form-group">
@@ -120,22 +143,11 @@ export default class UpdateEmployee extends  Component{
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-group">
-                                            <label>Department:</label>
-                                            <select className={'form-control'} name={'department'} onChange={this.setChanges} >
-                                                {
-                                                    this.state.departments.map((item, i) =>{
-                                                        return <option key={i} selected={this.state.department === item.name} value={item.name}>{item.name}</option>
-                                                    })
-                                                }
-                                            </select>
+                                            <label>Joined Date:</label>
+                                            <input type="date" className="form-control" value={dateFormat(this.state.date_joined, 'yyyy-mm-dd')} name={'date_joined'} onChange={this.setChanges} />
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className="form-group">
-                                <label>Joined Date:</label>
-                                <input type="date" className="form-control" value={dateFormat(this.state.date_joined, 'yyyy-mm-dd')} name={'date_joined'} onChange={this.setChanges} />
                             </div>
 
                             <button type={'button'} className="btn btn-success btn-block" onClick={this.updateEmployee}>Update Employee</button>
