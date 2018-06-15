@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Employees from './Employees';
+import Employees from './EmployeeList';
 import axios from 'axios';
 
 
