@@ -90,7 +90,6 @@ export default class addEmployee extends  Component{
                     email : '',
                     gender : 'Male',
                     position : '',
-                    department : '',
                 });
             }
         }).catch((err)=>{

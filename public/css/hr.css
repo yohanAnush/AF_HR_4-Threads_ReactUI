@@ -81,6 +81,17 @@ body.fixed-nav {
   max-width: 40rem;
 }
 
+.card-body-icon {
+  position: absolute;
+  z-index: 0;
+  top: -25px;
+  right: -25px;
+  font-size: 5rem;
+  -webkit-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  transform: rotate(15deg);
+}
+
 #mainNav .navbar-collapse {
   overflow: auto;
   max-height: 75vh;

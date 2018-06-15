@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import Breadcrumb from '../commons/Breadcrumb';
+import CardsView from './CardsView';
 
 export default class GeneralList extends Component {
     constructor(props) {
@@ -27,7 +28,9 @@ export default class GeneralList extends Component {
                         doe: response.data.data[0].date_established
                     });
                 }
-            })
+            }).catch((err)=> {
+            console.log(err);
+        })
     }
 
     deleteService(service){
@@ -57,6 +60,7 @@ export default class GeneralList extends Component {
             <div>
                 <Breadcrumb home={"HR"} current={"General information"}/>
                 <br/>
+                <CardsView/>
                 <div className={"card card-register mx-auto mt-5 "}>
                     <div className="card-header">
                         General Information
