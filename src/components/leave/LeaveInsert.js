@@ -50,12 +50,24 @@ export default class LeaveInsert extends Component {
     render() {
         return(
             <form className={"form-inline"}>
-                <div className={"form-group row"}>
-                    <label htmlFor={"eidForLeave"}>Employee Id(eid)</label>
-                    <input value={this.state.value} type={"text"} className={"form-control"} id={"eidTxt"} placeholder={"Enter EID"} onChange={this.onTextChange}/>
-                    <DatePicker name={this.state.start} color={"btn-success"} onDateChange={this.onStartDateChange}/>
-                    <DatePicker name={this.state.end} color={"btn-danger"} onDateChange={this.onEndDateChange}/>
-                    <button type={"button"} className={"btn btn-md btn-primary"} onClick={this.checkEligibility}>Check</button>
+                <div className={"form-group"}>
+
+                    <div className={"col-md-3"}>
+                        <label htmlFor={"eidForLeave"}>Employee Id(eid)</label>
+                    </div>
+                    <div className={"col-md-4"}>
+                        <input value={this.state.value} type={"text"} className={"form-control"} id={"eidTxt"} placeholder={"Enter EID"} onChange={this.onTextChange}/>
+                    </div>
+                    <div className={"col-sm-2"}>
+                        <DatePicker name={this.state.start} color={"btn-success"} onDateChange={this.onStartDateChange}/>
+                    </div>
+                    <div className={"col-md-2"}>
+                        <DatePicker name={this.state.end} color={"btn-danger"} onDateChange={this.onEndDateChange}/>
+                    </div>
+                    <div className={"col-md-1"}>
+                        <button type={"button"} className={"btn btn-md btn-primary "} onClick={this.checkEligibility}>Check</button>
+                    </div>
+
                 </div>
 
             </form>

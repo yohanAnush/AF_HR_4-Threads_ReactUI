@@ -31,8 +31,8 @@ export default class Employees extends Component{
                         <th>Position</th>
                         <th>Department</th>
                         <th>Joined Date</th>
-                        <th>Edit</th>
                         <th>Remove</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
