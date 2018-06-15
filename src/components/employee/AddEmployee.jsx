@@ -84,8 +84,14 @@ export default class addEmployee extends  Component{
             }
             if(res.data.success === true){
                 alert("Success..!\n"+res.data.data);
-                this.setState({isInserted:true});
-                this.render();
+                this.setState({
+                    isInserted:true,
+                    name : '',
+                    email : '',
+                    gender : 'Male',
+                    position : '',
+                    department : '',
+                });
             }
         }).catch((err)=>{
             console.log(err);
