@@ -31,12 +31,21 @@ export default class LeaveView extends Component {
     }
 
     getEmployeeWithEid(eid) {
-        axios.get('http://localhost:3001/employee/' + eid)
-            .then(response => {
-                if (response.data.success) {
-                    this.setState({ results: response.data.data });
-                }
-            });
+        // to avoid sending a GET with an empty eid which will turn out to be a GET ALL employee request.
+        if (!eid.includes(' ')) {
+            axios.get('http://localhost:3001/employee/' + eid)
+                .then(response => {
+                    if (response.data.success) {
+                        this.setState({ results: response.data.data });
+                    }
+                    else {
+                        this.setState({ results: [] });
+                    }
+                })
+                .catch(reject => {
+                    this.setState({ results: [] });
+                });
+        }
     }
 
     onResultSelection(e) {
@@ -56,6 +65,7 @@ export default class LeaveView extends Component {
     render() {
         return(
             <div>
+                <Breadcrumb home={"HR"} current={"Leave"}/>
                 <div className={"card"}>
                     <LeaveInsert value={this.state.keyword} onTextChange={this.onTextChange}/>
                     <ResultView results={this.state.results} select={this.onResultSelection}/>

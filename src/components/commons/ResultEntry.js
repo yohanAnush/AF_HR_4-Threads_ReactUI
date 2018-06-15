@@ -30,7 +30,7 @@ export default class ResultEntry extends Component {
 
     render() {
         return(
-            <button id={this.props.id} onClick={this.select} type="button" className="list-group-item list-group-item-action">{ this.props.result }</button>
+            <button id={this.props.id} onClick={this.select} type="button" className="list-group-item list-group-item-action"><small>{ this.props.result }</small></button>
         );
     }
 
