@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import dateFormat from 'dateformat';
+import Breadcrumb from '../commons/Breadcrumb';
+import CommonDetails from "../../Statics.Common";
 
 export default class UpdateEmployee extends  Component{
     constructor(props){
@@ -33,7 +35,7 @@ export default class UpdateEmployee extends  Component{
     }
 
     updateEmployee(){
-        axios.put('http://localhost:3001/employee/update/'+ this.props.match.params.eid,{
+        axios.put(CommonDetails.NODE_API+'/employee/update/'+ this.props.match.params.eid,{
             name:this.state.name,
             email:this.state.email,
             gender:this.state.gender,
@@ -78,15 +80,8 @@ export default class UpdateEmployee extends  Component{
 
     render(){
         return(<div>
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                        <a href="/dashboard">Dashboard</a>
-                    </li>
-                    <li className="breadcrumb-item">
-                        <a href="/employee">Employee</a>
-                    </li>
-                    <li className="breadcrumb-item active">Update Employee</li>
-                </ol>
+                <Breadcrumb home={"Employee"} href={'/employee'} current={"Update Employee"}/>
+
 
                 <div className="card card-register mx-auto mt-5">
                     <div className="card-header">
@@ -98,18 +93,13 @@ export default class UpdateEmployee extends  Component{
                                 <div className="form-row">
                                     <div className="col-md-6">
                                         <label>First name</label>
-                                        <input type="text" className="form-control" placeholder="Enter first name"  value={this.state.name} name={'name'} onChange={this.setChanges} />
+                                        <input type="text" className="form-control" placeholder="Enter Name"  value={this.state.name} name={'name'} onChange={this.setChanges} />
                                     </div>
                                     <div className="col-md-6">
-                                        <label>Last name</label>
-                                        <input type="text" className="form-control" placeholder="Enter last name"  value={this.state.name} name={'name'} onChange={this.setChanges} />
+                                        <label>Email:</label>
+                                        <input type="email" className="form-control" placeholder="Email Address"  value={this.state.email} name={'email'} onChange={this.setChanges} />
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className="form-group">
-                                <label>Email:</label>
-                                <input type="email" className="form-control" placeholder="Email Address"  value={this.state.email} name={'email'} onChange={this.setChanges} />
                             </div>
 
                             <div className="form-group">

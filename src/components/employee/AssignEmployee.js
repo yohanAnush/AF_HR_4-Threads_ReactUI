@@ -1,5 +1,8 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import Breadcrumb from '../commons/Breadcrumb';
+import ResultView from '../commons/ResultView';
+import CommonDetails from "../../Statics.Common";
 
 export default class BookHandler extends  Component{
     constructor(props) {
@@ -8,25 +11,33 @@ export default class BookHandler extends  Component{
             employees: [],
             department:'',
             eid:'',
-            departments:[]
+            departments:[],
+            keyword:'',
+            formErrors : {
+                errEmployeeClass:'',
+            }
         }
-        this.getAllEmployee();
         this.getAllDepartments();
         this.assignEmployee = this.assignEmployee.bind(this);
         this.setChanges = this.setChanges.bind(this);
+        this.onResultSelect = this.onResultSelect.bind(this);
     }
 
-    getAllEmployee(){
-        axios.get('http://localhost:3001/employee').then(res =>{
+    getEmployeesByName(keyword){
+        axios.get(CommonDetails.NODE_API+'/employee/name/'+keyword).then(res =>{
             console.log(res.data.data);
             this.setState({
                 employees: res.data.data || res.data
+            });
+        }).catch(()=>{
+            this.setState({
+                employees: []
             });
         })
     }
 
     getAllDepartments(){
-        axios.get('http://localhost:3001/department/').then((res) =>{
+        axios.get(CommonDetails.NODE_API+'/department/').then((res) =>{
             console.log(res.data.data);
             this.setState({
                 departments : res.data.data
@@ -36,10 +47,26 @@ export default class BookHandler extends  Component{
 
     setChanges(e){
         this.setState({[e.target.name]:e.target.value});
+        this.checkValidations(e);
+    }
+
+    checkValidations(e){
+        var formErrors = this.state.formErrors;
+        if(e.target.name === 'keyword') {
+            if (/^[a-zA-Z\s]+$/.test(e.target.value)) {
+                formErrors.errEmployeeClass = 'is-valid';
+                this.setState({formErrors: formErrors});
+                this.getEmployeesByName(e.target.value);
+            } else {
+                formErrors.errEmployeeClass = 'is-invalid';
+                this.setState({formErrors: formErrors});
+                this.setState({employees: []});
+            }
+        }
     }
 
     assignEmployee(){
-        axios.put('http://localhost:3001/employee/assign',{
+        axios.put(CommonDetails.NODE_API+'/employee/assign',{
             eid:this.state.eid,
             department:this.state.department
         }).then((result) =>{
@@ -50,31 +77,34 @@ export default class BookHandler extends  Component{
         });
     }
 
+    onResultSelect(e) {
+        e.preventDefault();
+
+        console.log(e.target.value);
+        if (e.target.id !== undefined && e.target.id !== '') {
+            this.setState({
+                eid: e.target.id ,
+                employees: [],
+                keyword: e.target.value
+            });
+        }
+    }
+
     render() {
         return <div>
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                        <a href="/dashboard">Dashboard</a>
-                    </li>
-                    <li className="breadcrumb-item">
-                        <a href="/employee">Employee</a>
-                    </li>
-                    <li className="breadcrumb-item active">Assign Employee</li>
-                </ol>
+            <Breadcrumb home={"Employee"} href={'/employee'} current={"Assign Employee"}/>
+
                 <div className="card card-register mx-auto mt-5">
                     <div className="card-header">Employee Assign</div>
                     <div className="card-body">
 
                         <div className="form-group">
                             <label>Employee:</label>
-                            <select className={'form-control'} name={'eid'} onChange={this.setChanges} >
-                                {
-                                    this.state.employees.map((item,i)=>{
-                                        return <option key={i} value={item.eid}>{item.eid + " | " + item.name}</option>
-                                    })
-                                }
-                            </select>
+                            <input type="text" className={"form-control "+this.state.formErrors.errEmployeeClass } placeholder="Employee Name" value={this.state.keyword}  name={'keyword'} onChange={this.setChanges} />
+                            <div className="invalid-feedback">Invalid employee name</div>
                         </div>
+
+                        <ResultView results={this.state.employees} select={this.onResultSelect}/>
 
                         <div className="form-group">
                             <label>Department:</label>
