@@ -36,18 +36,31 @@ export default class DepartmentList extends Component {
         return(
             <div>
                 <Breadcrumb home={"HR"} current={"View Departments"}/>
-                <div className={"card"}>
-                    <table className="table table-borderless">
+                <nav className="navbar navbar-light" style={{bg:'#FFFF'}}>
+                    <a className="navbar-brand"></a>
+                    <form className="form-inline">
+                        <input className="form-control mr-sm-2" type="search" placeholder="Search department .. " aria-label="Search"/>
+                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                <i className="fas fa-search"></i>
+                            </button>
+                    </form>
+                </nav>
+                <br/>
+                <div className={"card "}>
+                    <div className="card-header">
+                        View All Department Details
+                    </div>
+                    <table className="table table-bordered table-hover">
                         <thead>
-                        <tr>
-                            <th scope="col">Department Id</th>
-                            <th scope="col">Department Name</th>
-                            <th scope="col">Department Description</th>
-                            <th scope="col">Department Manager</th>
-                            <th scope="col">Date Established</th>
-                            <th scope="col">Delete</th>
-                            <th scope="col">Update</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">Department Id</th>
+                                <th scope="col">Department Name</th>
+                                <th scope="col">Department Description</th>
+                                <th scope="col">Department Manager</th>
+                                <th scope="col">Date Established</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Update</th>
+                            </tr>
                         </thead>
                         <tbody>
                         { this.state.departments.map((department, i) =>

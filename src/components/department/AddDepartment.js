@@ -14,7 +14,12 @@ export default class AddDepartment extends Component {
             name: '',
             description: '',
             manager: '',
-            date_established:'Date established'
+            date_established:'Date established',
+            errDeptName:'',
+            errDeptDescription:'',
+            errDeptManager:'',
+            errDeptDate:''
+
         };
 
         this.onDateChange = this.onDateChange.bind(this);
@@ -33,16 +38,34 @@ export default class AddDepartment extends Component {
     onNameChange(e) {
         let name = e.target.value;
         this.setState({ name: name });
+
+        if (/^[a-zA-Z\s]+$/.test(e.target.value)){
+            this.setState({errDeptName:'is-valid'});
+        }else{
+            this.setState({errDeptName:'is-invalid'});
+        }
     }
 
     onDescriptionChange(e) {
         let description = e.target.value;
         this.setState({ description: description });
+
+        if (/^[a-zA-Z\s]*[0-9]*[,|.]*$/.test(e.target.value)){
+            this.setState({errDeptDescription:'is-valid'});
+        }else{
+            this.setState({errDeptDescription:'is-invalid'});
+        }
     }
 
     onManagerNameChange(e) {
         let manager = e.target.value;
         this.setState({ manager: manager });
+
+        if (/^[a-zA-Z\s]+$/.test(e.target.value)){
+            this.setState({errDeptManager:'is-valid'});
+        }else{
+            this.setState({errDeptManager:'is-invalid'});
+        }
     }
 
     onSubmit() {
@@ -65,33 +88,37 @@ export default class AddDepartment extends Component {
         return(
             <div>
                 <Breadcrumb home={"HR"} current={"Add Department"}/>
-                <div className={"card"}>
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="deptId">Department Id</label>
-                            <input type="text" className="form-control" id="deptId"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="deptName">Department Name</label>
-                            <input onChange={this.onNameChange} type="text" className="form-control" id="deptName" placeholder="Enter department name"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="deptDescription">Department Description</label>
-                            <input onChange={this.onDescriptionChange} type="text" className="form-control" id="deptDescription" placeholder="Enter department description"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="deptManager">Department Manager</label>
-                            <input onChange={this.onManagerNameChange} type="text" className="form-control" id="deptManager" placeholder="Enter department manager's name"/>
-                        </div>
+                <div className={"card card-register mx-auto mt-5"}>
+                    <div className="card-header">
+                        Create New Department
+                    </div>
+                    <div className="card-body">
+                        <form>
+                            <div className="form-group">
+                                <label htmlFor="deptName">Department Name</label>
+                                <input onChange={this.onNameChange} type="text" className={"form-control "+this.state.errDeptName} id="deptName" placeholder="Enter department name"/>
+                                <div className="invalid-feedback">Invalid department name</div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="deptDescription">Department Description</label>
+                                <input onChange={this.onDescriptionChange} type="text" className={"form-control "+this.state.errDeptDescription} id="deptDescription" placeholder="Enter department description"/>
+                                <div className="invalid-feedback">Invalid department description</div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="deptManager">Department Manager</label>
+                                <input onChange={this.onManagerNameChange} type="text" className={"form-control "+this.state.errDeptManager} id="deptManager" placeholder="Enter department manager's name"/>
+                                <div className="invalid-feedback">Please enter only letters</div>
+                            </div>
 
-                        <div className="form-group">
-                            <label htmlFor="dateEstablished">Date Established</label>
-                            <input type="date" className="form-control" name={'dateEstablished'} onChange={this.onDateChange} />
-                            <small>{this.state.date}</small>
-                        </div>
+                            <div className="form-group">
+                                <label htmlFor="dateEstablished">Date Established</label>
+                                <input type="date" className="form-control" name={'dateEstablished'} onChange={this.onDateChange} />
+                                <small>{this.state.date}</small>
+                            </div>
 
-                        <button type="button" className="btn btn-primary" onClick={this.onSubmit}>Submit</button>
-                    </form>
+                            <button type="button" className="btn btn-success btn-block" onClick={this.onSubmit}>Add Department</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )

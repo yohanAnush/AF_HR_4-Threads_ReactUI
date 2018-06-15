@@ -90,10 +90,6 @@ export default class EditDepartment extends Component {
                 <div className={"card"}>
                     <form>
                         <div className="form-group">
-                            <label htmlFor="deptId">Department Id</label>
-                            <input value={this.state.did} type="text" className="form-control" id="deptId"/>
-                        </div>
-                        <div className="form-group">
                             <label htmlFor="newDeptName">Department Name</label>
                             <input onChange={this.onNameChange} type="text" className="form-control" id="deptName" value={this.state.name}/>
                         </div>
