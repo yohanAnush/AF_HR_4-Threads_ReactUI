@@ -82,7 +82,6 @@ export default class GeneralList extends Component {
             <div>
                 <Breadcrumb home={"HR"} current={"General information"}/>
                 <br/>
-                <CardsView/>
                 <div className={"card card-register mx-auto mt-5 "}>
                     <div className="card-header">
                         General Information
