@@ -77,7 +77,9 @@ export default class AddDepartment extends Component {
             'date_established' : this.state.date_established
         })
             .then(function (response) {
-                console.log(response);
+                if(response.data.success){
+                    alert("Department added");
+                };
             })
             .catch(function (error) {
                 console.log(error);

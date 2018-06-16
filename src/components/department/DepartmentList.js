@@ -14,6 +14,7 @@ export default class DepartmentList extends Component {
         };
 
         this.getAllDepartments = this.getAllDepartments.bind(this);
+        this.search = this.search.bind(this);
     }
 
     // Fetching data when component is rendered and is a get request.
@@ -32,6 +33,20 @@ export default class DepartmentList extends Component {
             )
     }
 
+    search(e) {
+        let keyword = e.target.value;
+
+        console.log(keyword);
+        axios.get('http://localhost:3001/department/name/' + keyword)
+            .then(response => {
+                if (response.data.success) { this.setState({ departments: response.data.data }); }
+            })
+            .catch(rejected => {
+                    console.log(rejected);
+                }
+            )
+    }
+
     render() {
         return(
             <div>
@@ -39,7 +54,7 @@ export default class DepartmentList extends Component {
                 <nav className="navbar navbar-light" style={{bg:'#FFFF'}}>
                     <a className="navbar-brand"></a>
                     <form className="form-inline">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search department .. " aria-label="Search"/>
+                        <input onChange={this.search} className="form-control mr-sm-2" type="search" placeholder="Search department .. " aria-label="Search"/>
                             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
                                 <i className="fas fa-search"></i>
                             </button>

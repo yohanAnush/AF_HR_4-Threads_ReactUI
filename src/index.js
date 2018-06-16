@@ -20,6 +20,7 @@ import AddDepartmnet from './components/department/AddDepartment';
 import DepartmentList from './components/department/DepartmentList';
 import EditDepartment from './components/department/EditDepartment';
 import GeneralList from './components/general_Information/GeneralList';
+import AddGeneralList from './components/general_Information/AddGeneralList';
 
 
 
@@ -41,6 +42,7 @@ ReactDOM.render(
             <Route path='/add-department' component={AddDepartmnet}/>
             <Route path='/edit-department/:did' component={EditDepartment}/>
             <Route path='/general' component={GeneralList}/>
+            <Route path='/add-general' component={AddGeneralList}/>
         </div>
     </BrowserRouter>
     , document.getElementById('root'));
