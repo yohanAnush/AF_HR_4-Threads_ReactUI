@@ -74,8 +74,12 @@ export default class EditDepartment extends Component {
         })
             .then(function (response) {
                 console.log(response);
-                this.props.getAllDepartments();
-                this.DepartmentList
+
+                if(response.data.success){
+                    alert("Department updated");
+                    this.props.getAllDepartments();
+                    this.DepartmentList;
+                };
             })
             .catch(function (error) {
                 console.log(error);
