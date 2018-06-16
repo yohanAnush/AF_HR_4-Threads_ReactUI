@@ -54,6 +54,7 @@ export default class AttendanceList extends Component {
                         <th scope="col">Employee</th>
                         <th scope="col">Date start</th>
                         <th scope="col">Date end</th>
+                        <th scope="col">Update</th>
                     </tr>
                     </thead>
                     <tbody>

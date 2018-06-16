@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class LeaveListItem extends Component {
 
@@ -9,6 +10,10 @@ export default class LeaveListItem extends Component {
         };
     }
 
+    componentDidMount() {
+        console.log(this.state);
+    }
+
     render() {
         let leave = this.state.leave;
         return(
@@ -16,6 +21,11 @@ export default class LeaveListItem extends Component {
                 <th scope="row">{ leave.eid }</th>
                 <td>{ leave.start }</td>
                 <td>{ leave.end }</td>
+                <td>
+                    <button className={"btn btn-md btn-success"}>
+                        <Link style={{color:"#FFF"}}  to={'update-leave/'+leave.eid+'/on/'+leave.start}><i className="fa fa-edit"></i></Link>
+                    </button>
+                </td>
             </tr>
         );
     }

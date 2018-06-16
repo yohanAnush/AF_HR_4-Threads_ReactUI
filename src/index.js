@@ -9,6 +9,7 @@ import App from './App';
 import AttendanceView from './components/attendance/AttendanceView';
 import LeaveInsertView from './components/leave/LeaveInsertView';
 import LeaveList from './components/leave/LeaveList';
+import LeaveUpdateView from './components/leave/LeaveUpdateView';
 
 import EmployeeHandler from './components/employee/EmployeeHandler';
 import AssignEmployee from './components/employee/AssignEmployee';
@@ -29,6 +30,7 @@ ReactDOM.render(
             <Route path='/attendance' component={AttendanceView}/>
             <Route path='/leave/insert' component={LeaveInsertView}/>
             <Route path='/leaves' component={LeaveList}/>
+            <Route path='/update-leave/:eid/on/:date' component={LeaveUpdateView}/>
 
             <Route path='/employee' component={EmployeeHandler}/>
             <Route path='/add-employee' component={AddEmployee}/>

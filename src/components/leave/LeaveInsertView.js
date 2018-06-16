@@ -72,7 +72,7 @@ export default class LeaveInsertView extends Component {
 
                 <div className="card card-register mx-auto mt-5">
                     <div className="card-header">
-                        Register New Employee
+                        Issue leave to an employee
                     </div>
                     <div className="card-body">
                         <LeaveInsert value={this.state.keyword} onTextChange={this.onTextChange}/>
