@@ -70,7 +70,6 @@ export default class AssignEmployee extends  Component{
         this.setState({[e.target.name]:e.target.value});
         this.setState({[e.target.name]:e.target.value});
 
-        this.checkValidations(e);
 
         if(e.target.name == 'departmentName') {
             this.state.departmentsList.map((item,i)=>{
@@ -80,10 +79,9 @@ export default class AssignEmployee extends  Component{
             });
         }
 
-        console.log(this.state.departmentName);
         console.log(e.target.value +" | "+e.target.name);
-        console.log(this.state.departmentName);
-        console.log("\n\n");
+        this.checkValidations(e);
+
     }
 
     // setDepartmentChanges(e){
@@ -130,6 +128,10 @@ export default class AssignEmployee extends  Component{
     }
 
     assignEmployee(){
+
+        console.log("departmentName >>> "+this.state.departmentName);
+        console.log("did >>> "+this.state.deptid);
+
         var newAssigned = {
             did:this.state.deptid,
             name:this.state.departmentName,
