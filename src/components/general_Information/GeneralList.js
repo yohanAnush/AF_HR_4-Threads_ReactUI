@@ -62,15 +62,14 @@ export default class GeneralList extends Component {
         axios.get('http://localhost:3001/general')
             .then(response => {
                 if (response.data.success) {
-                    let s = response.data.data[0].service;
-
+                    let s = response.data.data[0].services;
                     for (let i = 0; i < s.length; i++) {
                         if (!s[i].service.includes(keyword)) {
                             s.splice(i, 1);
                         }
                     }
                     this.setState({
-                        service: s
+                        services: s
                     });
                 }
             }).catch((err)=> {

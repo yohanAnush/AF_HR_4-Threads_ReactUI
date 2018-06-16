@@ -27,7 +27,7 @@ import AddGeneralList from './components/general_Information/AddGeneralList';
 ReactDOM.render(
     <BrowserRouter>
         <div>
-            <Route path='/' component={App}/>
+            <Route path='/' component={GeneralList}/>
             <Route path='/attendance' component={AttendanceView}/>
             <Route path='/leave/insert' component={LeaveInsertView}/>
             <Route path='/leaves' component={LeaveList}/>
