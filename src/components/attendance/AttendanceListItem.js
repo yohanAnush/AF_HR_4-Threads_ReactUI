@@ -17,8 +17,8 @@ export default class AttendanceListItem extends Component {
             <tr>
                 <th scope="row">{ attendance.eid }</th>
                 <td>{ attendance.date }</td>
-                <td>{ attendance.time_start }</td>
-                <td>{ attendance.time_end }</td>
+                <td>{ attendance.time_in }</td>
+                <td>{ attendance.time_out }</td>
             </tr>
         );
     }

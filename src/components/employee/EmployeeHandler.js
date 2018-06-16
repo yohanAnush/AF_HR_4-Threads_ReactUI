@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import Employees from './EmployeeList';
+import EmployeeList from './EmployeeList';
 import EmployeeSearch from './EmployeeSearch';
 import axios from 'axios';
 import Breadcrumb from '../commons/Breadcrumb';
 import CommonDetails from "../../Statics.Common";
 
-export default class BookHandler extends  Component{
+export default class EmployeeHandler extends  Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -48,7 +48,7 @@ export default class BookHandler extends  Component{
                 <div className="card-header">Employee Details</div>
                     <div className="card-body">
                         <EmployeeSearch onTextChange={this.onTextChange} />
-                        <Employees employees={this.state.employees} getAllEmployees={() => this.getAllEmployees()}/>
+                        <EmployeeList employees={this.state.employees} getAllEmployees={() => this.getAllEmployees()}/>
                     </div>
             </div>
         </div>;

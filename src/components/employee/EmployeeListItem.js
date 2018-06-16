@@ -44,7 +44,6 @@ export default class Employee extends Component{
             <td>{this.employee.email}</td>
             <td>{this.employee.gender}</td>
             <td>{this.employee.position}</td>
-            <td>{this.employee.department}</td>
             <td>{dateFormat(this.employee.date_joined, 'yyyy-mm-dd')}</td>
             <td>
                 <button className={"btn btn-md btn-danger"} onClick={(e) => this.delete(this.employee.eid)}>

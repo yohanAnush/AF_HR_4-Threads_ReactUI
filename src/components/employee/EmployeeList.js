@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Employee from './EmployeeListItem';
+import EmployeeListItem from './EmployeeListItem';
 import PropTypes from 'prop-types';
 
 export default class Employees extends Component{
@@ -29,7 +29,6 @@ export default class Employees extends Component{
                         <th>Email</th>
                         <th>Gender</th>
                         <th>Position</th>
-                        <th>Department</th>
                         <th>Joined Date</th>
                         <th>Remove</th>
                         <th>Edit</th>
@@ -38,7 +37,7 @@ export default class Employees extends Component{
                 <tbody>
                     {
                         this.employees.map((employee) => {
-                            return <Employee key={employee.eid} employee={employee} getAllEmployees ={() => this.props.getAllEmployees()}  />
+                            return <EmployeeListItem key={employee.eid} employee={employee} getAllEmployees ={() => this.props.getAllEmployees()}  />
                         })
                     }
                 </tbody>
